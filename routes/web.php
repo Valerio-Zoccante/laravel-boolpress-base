@@ -13,5 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'PostController@index');
+// Route::get('/', 'PostController@index');
+Route::resource('blog', 'PostController');  
+
 Route::get('/published', 'PublishedController@index');
