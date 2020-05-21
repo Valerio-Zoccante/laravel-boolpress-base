@@ -7,7 +7,7 @@
     </head>
     <body>
         @foreach ($posts as $post)
-            <h2>{{$post->title}}</h2>
+            <h2><a href="{{route('blog.show', $post->id)}}">{{$post->title}}</a></h2>
             <h4>{{$post->author}}</h4>
             <small>{{$post->body}}</small>
         @endforeach
