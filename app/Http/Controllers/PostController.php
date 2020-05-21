@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 use App\Post;
 
 class PostController extends Controller
@@ -47,7 +49,7 @@ class PostController extends Controller
           dd('errore');
       }
 
-      return redirect()->route('posts.show', $post->id);
+      return redirect()->route('blog.show', $post->id);
     }
 
     /**
@@ -63,7 +65,7 @@ class PostController extends Controller
            abort('404');
        }
 
-       return view('posts.show', compact('post'));
+       return view('blog.show', compact('post'));
     }
 
     /**
