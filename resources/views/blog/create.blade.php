@@ -19,7 +19,7 @@
     </div>
     <div>
       <label for="author">Author</label>
-      <input type="text" placeholder="Inserisci the author" name="author">
+      <input type="text" placeholder="Insert the author" name="author">
     </div>
     <div>
       <label for="not-published">Not Pubblished</label>

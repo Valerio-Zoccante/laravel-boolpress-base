@@ -76,7 +76,12 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        if(empty($post)) {
+           abort('404');
+       }
+       return view('blog.edit', compact('post'));
+
     }
 
     /**
@@ -88,7 +93,19 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+
+        if(empty($post)) {
+            abort('404');
+        }
+
+        $data = $request->all();
+        $data['slug'] = Str::slug($data['title'] , '-');
+
+        $post->fill($data);
+        $updated = $post->update();
+
+        return redirect()->route('blog.show', $post->id);
     }
 
     /**
@@ -99,6 +116,13 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        if (empty($post)) {
+            abort('404');
+        }
+
+        $post->delete();
+
+        return redirect()->route('blog.index');
     }
 }
